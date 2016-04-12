@@ -104,7 +104,7 @@ public class Boss : MonoBehaviour {
 	public void dealDamage(int damage){
 		this.bossHealth -= damage;
 		if (this.bossHealth > 90 && this.bossHealth <= 100) {
-			//do nothing
+			model.changeTexture (0);
 			
 		} else if (this.bossHealth > 80 && this.bossHealth <= 90 ) {
 			model.changeTexture (1);
