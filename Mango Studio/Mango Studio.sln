@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{94A6FFAC-E1FF-3ECF-1443-AC4EDA3CA733}") = "Mango Studio", "Assembly-CSharp.csproj", "{FDD966CA-4FF1-41C3-F64F-478F4F16C697}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDD966CA-4FF1-41C3-F64F-478F4F16C697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD966CA-4FF1-41C3-F64F-478F4F16C697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD966CA-4FF1-41C3-F64F-478F4F16C697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD966CA-4FF1-41C3-F64F-478F4F16C697}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
