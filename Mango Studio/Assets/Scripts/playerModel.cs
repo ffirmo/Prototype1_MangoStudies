@@ -19,6 +19,7 @@ public class playerModel : MonoBehaviour
 	private float cdbuf;
 	public List<Vector3> shadowMovements = new List<Vector3>();
 	public List<Boolean> shadowFiring =  new List<Boolean>();
+	public List<int> shadowDirection =  new List<int>();
 	public Boolean firstRun = true;
 	public int shadowitr = 0;
 
@@ -94,6 +95,7 @@ public class playerModel : MonoBehaviour
 				//shadowitr = 0;
 			} else {
 				this.mat.color = Color.gray;
+				this.transform.eulerAngles = new Vector3 (0, 0, this.shadowDirection[shadowitr] * 90);
 				//this.mat.shader = Shader.Find("Transparent/Diffuse");
 				if (shadowFiring [shadowitr] == true) {
 					this.shoot ();
@@ -151,6 +153,7 @@ public class playerModel : MonoBehaviour
 	public void destroy(){
 		firstRun = false;
 		this.owner.m.THEBOSS.bossHealth = 100;
+		//this.owner.m.THEBOSS.model.transform.position = new Vector3(0,0, 0);
 		foreach (Player x in owner.m.shadowPlayers) {
 			x.model.shadowitr = 0;
 		}
@@ -196,21 +199,23 @@ public class playerModel : MonoBehaviour
 //	}
 
 	void OnGUI(){
+		if (this.firstRun) {
+			GUI.color = Color.yellow;
+			GUI.skin.box.alignment = TextAnchor.MiddleLeft;
+			GUI.skin.box.fontSize = 25;
+			string s = "";
 
-		GUI.color = Color.yellow;
-		GUI.skin.box.alignment = TextAnchor.MiddleLeft;
-		GUI.skin.box.fontSize = 25;
-		string s = "";
+			for (int i = 0; i < (cd - clock + cdbuf) * 10; i++) {
+				s += "I";
+			}
 
-		for (int i = 0; i < (cd-clock+cdbuf) *10 ; i++) {
-			s += "I";
+
+			GUI.Box (new Rect (10, 500, 200, 100), "Cooldown: \n" + s);
+
+			GUI.color = Color.white;
+			GUI.skin.box.fontSize = 12;
+			GUI.skin.box.alignment = TextAnchor.MiddleCenter;
 		}
-
-		GUI.Box(new Rect (10, 500, 200, 100), s);
-
-		GUI.color = Color.white;
-		GUI.skin.box.fontSize = 12;
-		GUI.skin.box.alignment = TextAnchor.MiddleCenter;
 	}
 
 

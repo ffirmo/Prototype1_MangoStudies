@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 	private Boolean startitr;
 	public Boss THEBOSS;
 	public Boolean gameover = false;
+	public Boolean gamewon = false;
 
 
     // Level number
@@ -82,7 +83,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+		if (this.gamewon == false && THEBOSS.bossHealth <= 0) {
+			this.gamewon = true;
+		}
 		clock += Time.deltaTime;
+		currentplayer.model.shadowDirection.Add (currentplayer.direction);
 	//	shadow.Add (currentplayer.model.transform.localPosition);
 		if (Input.GetKey (KeyCode.RightArrow) ) {
 			currentplayer.direction = 3;
@@ -114,6 +120,7 @@ public class GameManager : MonoBehaviour
 		if (currentplayer.getHealth () <= 0) {
 			currentplayer.destroy();
 
+			//this.THEBOSS.model.transform.position.y = 0;
 			players.Remove(currentplayer);
 			shadowPlayers.Add (currentplayer);
 			//startitr = true;
@@ -180,13 +187,41 @@ public class GameManager : MonoBehaviour
 			string s = "GAME OVER!";
 
 
-			GUI.Box (new Rect (Screen.width/2 - 200, Screen.height/2 -50, 200, 100), s);
+			GUI.Box (new Rect (Screen.width / 2 - 200, Screen.height / 2 - 50, 200, 100), s);
 			s = null;
 			GUI.color = Color.white;
 			GUI.skin.box.fontSize = 12;
 			GUI.skin.box.alignment = TextAnchor.MiddleCenter;
 		
-		
+		}
+
+		if(this.gamewon){
+
+			foreach (Player x in this.players) {
+				Destroy (x.gameObject);
+			}
+			this.players.Clear ();
+
+			foreach (Player x in this.shadowPlayers) {
+				Destroy (x.gameObject);
+			}
+
+			this.shadowPlayers.Clear ();
+
+			GUI.skin.box.alignment = TextAnchor.MiddleLeft;
+			GUI.skin.box.fontSize = 25;
+			string s = "GAME WON!";
+
+
+			GUI.Box (new Rect (Screen.width / 2 - 200, Screen.height / 2 - 50, 200, 100), s);
+			s = null;
+			GUI.color = Color.white;
+			GUI.skin.box.fontSize = 12;
+			GUI.skin.box.alignment = TextAnchor.MiddleCenter;
+
+
+
+		}
 			if (this.currentplayer.model.healthval > 3) {			
 				GUI.color = Color.green;
 			} else {
@@ -194,28 +229,20 @@ public class GameManager : MonoBehaviour
 			}
 			GUI.skin.box.alignment = TextAnchor.MiddleLeft;
 			GUI.skin.box.fontSize = 22;
-			 s = "";
+			 String ss = "";
 
 			for (int i = 0; i < this.currentplayer.model.healthval; i++) {
 
-				s += "I";
+				ss += "I";
 
 			}
 
-			GUI.Box(new Rect (10, 150, 200, 100), s);
+			GUI.Box(new Rect (10, 150, 200, 100), "Player: \n " + ss);
 
 			GUI.color = Color.white;
 			GUI.skin.box.fontSize = 12;
 			GUI.skin.box.alignment = TextAnchor.MiddleCenter;
 		
-		
-		
-		
-		
-		
-		}
-
-
 
 
 	}

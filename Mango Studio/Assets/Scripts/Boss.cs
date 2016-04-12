@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Boss : MonoBehaviour {
 
-	private BossModel model;
+	public BossModel model;
 	private float speed;
 	private GameManager m;
 	private float bcooldown;
@@ -34,7 +34,7 @@ public class Boss : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		model.changeTexture (this.bossHealth/10);
+		//model.changeTexture (this.bossHealth/10);
 		float playerx = m.currentplayer.transform.position.x;
 		float playery = m.currentplayer.transform.position.y;
 		if ((playery - this.transform.position.y) <= 0 && !charge) {
@@ -144,7 +144,7 @@ public class Boss : MonoBehaviour {
 
 		}
 
-		GUI.Box(new Rect (10, 10, 200, 100), s);
+		GUI.Box(new Rect (10, 10, 200, 100), "Boss: \n" + s);
 
 		GUI.color = Color.white;
 		GUI.skin.box.fontSize = 12;
@@ -153,7 +153,7 @@ public class Boss : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.name == "Bullet") {
-			this.dealDamage (5);
+			this.dealDamage (2);
 		}
 	}
 }
