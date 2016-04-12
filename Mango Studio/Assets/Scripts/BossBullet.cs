@@ -9,7 +9,7 @@ public class BossBullet : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.name = "BossBullet";
-		speed = 7;
+		speed = 6;
 
 		var modelObject = GameObject.CreatePrimitive(PrimitiveType.Quad);	// Create a quad object for holding the gem texture.
 		model = modelObject.AddComponent<BossBulletModel>();						// Add a marbleModel script to control visuals of the gem.

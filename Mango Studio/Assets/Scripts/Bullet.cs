@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour {
 			}
 		}
 
-		if (this.transform.position.x > 7 || this.transform.position.x < -7 || this.transform.position.y > 5 || this.transform.position.y < -5) {
+		if (this.transform.position.x > 9 || this.transform.position.x < -9 || this.transform.position.y > 6 || this.transform.position.y < -6) {
 			Destroy (this.gameObject);
 		}
 	}

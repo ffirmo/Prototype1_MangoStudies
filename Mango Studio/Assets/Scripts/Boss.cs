@@ -17,7 +17,7 @@ public class Boss : MonoBehaviour {
 	public void init (GameManager owner) {
 		this.name = "Boss";
 		speed = .7f;
-		chargeSpeed = 3;
+		chargeSpeed = 2;
 		m = owner;
 		this.bossHealth = 100;
 		var modelObject = GameObject.CreatePrimitive(PrimitiveType.Quad);	// Create a quad object for holding the gem texture.

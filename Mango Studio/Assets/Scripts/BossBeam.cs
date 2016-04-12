@@ -10,7 +10,7 @@ public class BossBeam : MonoBehaviour {
 	// Use this for initialization
 	public void init (Boss owner) {
 		this.name = "BossBeam";
-		speed = 7;
+		speed = 6;
 		m = owner;
 
 		var modelObject = GameObject.CreatePrimitive(PrimitiveType.Quad);	// Create a quad object for holding the gem texture.
@@ -19,7 +19,7 @@ public class BossBeam : MonoBehaviour {
 
 		BoxCollider2D playerbody = gameObject.AddComponent<BoxCollider2D> ();
 		playerbody.isTrigger = true;
-		transform.localScale = new Vector3 (2, .2f, 1);
+		transform.localScale = new Vector3 (2.2f, .2f, 1);
 
 		this.transform.rotation = new Quaternion(m.transform.rotation .x,m.transform.rotation.y,m.transform.rotation.z,m.transform.rotation.w);
 
