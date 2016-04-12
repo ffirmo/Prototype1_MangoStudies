@@ -13,7 +13,7 @@ public class playerModel : MonoBehaviour
 	private int movex;
 	private int movey;
 	private float speed;
-	public int healthval = 10;
+	public int healthval = 5;
 	//private float damagebuf;
 	private float cd;
 	private float cdbuf;
