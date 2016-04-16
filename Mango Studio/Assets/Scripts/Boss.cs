@@ -12,6 +12,7 @@ public class Boss : MonoBehaviour {
 	private float charging;
 	private float chargeSpeed;
 	public int bossHealth;
+	private bool slow;
 
 	// Use this for initialization
 	public void init (GameManager owner) {
