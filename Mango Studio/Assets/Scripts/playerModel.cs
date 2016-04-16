@@ -93,7 +93,12 @@ public class playerModel : MonoBehaviour
 			
 			if (shadowitr >= shadowMovements.Count) {
 				//shadowitr = 0;
+				this.mat.color = Color.black;
+				this.owner.tag = "Dead";
+				this.transform.position = new Vector3(Screen.width +200, Screen.height + 200, shadowMovements[0].z);
+
 			} else {
+				this.owner.tag = "Player";
 				this.mat.color = Color.gray;
 				this.transform.eulerAngles = new Vector3 (0, 0, this.shadowDirection[shadowitr] * 90);
 				//this.mat.shader = Shader.Find("Transparent/Diffuse");
@@ -146,17 +151,28 @@ public class playerModel : MonoBehaviour
 	public void damage(){
 		healthval--;
 		if (healthval == 0) {
-			this.destroy ();
+			if (firstRun) {
+				this.destroy ();
+			} else {
+				shadowitr = this.shadowDirection.Count;
+
+			}
 		}
 	}
 
 	public void destroy(){
-		firstRun = false;
-		this.owner.m.THEBOSS.bossHealth = 100;
-		//this.owner.m.THEBOSS.model.transform.position = new Vector3(0,0, 0);
-		foreach (Player x in owner.m.shadowPlayers) {
-			x.model.shadowitr = 0;
-		}
+		
+			firstRun = false;
+			this.owner.m.THEBOSS.bossHealth = 100;
+			
+			//this.healthval = 10;
+			//this.owner.m.THEBOSS.model.transform.position = new Vector3(0,0, 0);
+			foreach (Player x in owner.m.shadowPlayers) {
+				x.model.shadowitr = 0;
+				x.model.healthval = 5;
+				x.model.owner.playerbody.isTrigger = true;
+			}
+		 
 
 	}
 

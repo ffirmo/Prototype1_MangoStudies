@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	//private int initHealth;
 	public GameManager m;		// A pointer to the manager (not needed here, but potentially useful in general).
 	public int direction = 0;
+	public BoxCollider2D playerbody;
 
 	public void init(int playerType, GameManager m) {
 		this.playerType = playerType;
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour {
 		this.m = m;
 
 		var modelObject = GameObject.CreatePrimitive(PrimitiveType.Quad);	// Create a quad object for holding the gem texture.
-		BoxCollider2D playerbody = gameObject.AddComponent<BoxCollider2D> ();
+		playerbody = gameObject.AddComponent<BoxCollider2D> ();
 		Rigidbody2D playerRbody = gameObject.AddComponent<Rigidbody2D> ();
 		playerRbody.gravityScale = 0;
 		playerbody.isTrigger = true;
